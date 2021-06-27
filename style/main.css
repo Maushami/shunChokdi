@@ -138,6 +138,7 @@ header .container{
 }
 .right{
     width: 500px;
+    margin: 0 auto;
 }
 .header{
     display: flex;
@@ -449,6 +450,9 @@ header .container{
     .game, .winner, .tie, .right{
         width: 380px;
     height: 380px;
+    }
+    .game, .winner{
+        height: 480px;
     }
     
 }
