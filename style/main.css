@@ -436,5 +436,10 @@ header .container{
     .restart::after{
         display: none;
     }
+
+    .game, .winner, .tie{
+        width: 480px;
+    height: 480px;
+    }
     
 }
