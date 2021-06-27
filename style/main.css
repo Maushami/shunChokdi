@@ -1,0 +1,437 @@
+body{
+    background-color: #f9f9f9;
+    color: #1E2D66;
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+img{
+    max-width: 100%;
+}
+header{
+    padding: 15px 0;
+    border-bottom: 1px solid rgb(0,0,0,0.04) ;
+    justify-content: center;
+    align-items: center;
+}
+.container{  
+    max-width: 1440px;
+    width:  100%;
+    margin: 0 auto;
+}
+.logo-box{
+    flex:1
+}
+.logo{
+    width: 80px;
+    height: 80px;
+    border: 2px solid #D5E3FB;
+    border-radius: 50px;
+    font-size: 49px;
+    font-weight: 900;
+    position: relative;
+    margin: 0 auto;
+}
+.logo .x{
+    color: #FA1B69;
+    position: absolute;
+    right: 15px;
+    top: -6px;
+    text-shadow: 0px 2px #ff0000;
+}
+.logo .o{
+    width: 40px;
+    height: 40px;
+    border: 8px solid #4287FF;
+    display: block;
+    border-radius: 50px;
+    position: absolute;
+    z-index: 1;
+    left: 8px;
+    top: 25px;
+}    
+.logo .o::before{
+    width: 37px;
+    height: 37px;
+    z-index: -1;
+    content: "";
+    border: 5px solid #fafafa;
+    position: absolute;
+    border-radius: 50px;
+    top: -11px;
+    left: -11px;
+}
+header .container{
+    position: relative;
+    display: flex;
+}
+
+.wrapper{
+    max-width: 1440px;
+    width: 100%;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 40px;
+    flex-direction: column;
+
+}
+/* .restart{
+    display: flex;
+    height: 50px;
+    width: 175px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #4c6986;
+    color: #4c6986;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 10px;
+} */
+.restart{
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    padding: 8px;
+    border: 3px solid #4287FF;
+    border-radius: 50px;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+
+}
+.restart svg{
+    fill: #4287FF;
+    transition: all 0.5s ease-in-out;
+}
+.restart::after{   
+     content: "start a new game";
+    position: absolute;
+    width: 134px;
+    padding: 5px;
+    background: rgb(0, 0, 0,0.4);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    bottom: -43px;
+    left: -50px;
+    font-size: 15px;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+}
+.restart:hover::after{
+    opacity: 1;
+}
+.restart:hover{
+    background-color:  #FA1B69;
+    border-color:  #FA1B69;
+}
+.restart:hover svg{
+    fill: #fff;
+}
+.right{
+    width: 500px;
+}
+.header{
+    display: flex;
+    color:#9a9a9a;
+    font-size: 24px;
+}
+.title{
+    max-width: 500px;
+    text-align: center;
+}
+ h6{
+    font-size: 24px;
+    color: #4287FF;
+}
+ h1{
+    font-size: 51px;
+    margin: 0 0 15px;
+    margin: 0px 0 70px;
+}
+ .player-x, .player-o{
+    flex: 1;
+    border: 4px solid #EAF2FF;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    padding: 10px 20px;
+    margin: 4px 0 20px;
+    border-radius: 50pc;
+    text-align: center;
+    margin: 0 20px 40px;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+.player-x{
+    color: #4287FF;
+    border-color: #4287FF;
+}
+.player-x.active{
+    color: #fff;
+    border-color: #4287FF;
+    background-color: #4287FF;
+}
+.player-o{
+    color: #FA1B69;
+    border-color: #FA1B69;
+}
+.player-o.active{
+    color: #fff;
+    border-color:  #FA1B69;
+    background-color: #FA1B69;
+}
+
+.tile-o{
+    color: #FA1B69;
+}
+.tile-x{
+    color: #4287FF;
+}
+.tile-winner span{
+    color: #23ce6b;
+}
+.game{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+}
+.board{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3, 1fr);
+    flex-grow: 1;
+    grid-gap:0px
+}
+.board.foundWinner{
+    position: relative;
+}
+.board-tile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:transparent;
+    font-size: 80px;
+    cursor: pointer;
+}
+.board-tile:hover{
+    background-color: #D5E3FB;
+}
+.board-tile:not(:nth-child(3n)){
+    border-right: 3px solid #D5E3FB;
+
+}
+.board-tile:not(:nth-last-child(-n + 3)){
+    border-bottom: 3px solid #D5E3FB;
+}
+
+/* win */
+.game{
+    position: relative;
+}
+.winner, .tie{
+    display: flex;
+    position: absolute;
+    background-color: #fafafa;
+    height:500px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out;
+    overflow: hidden;
+    opacity: 0;
+    top:0;
+    left: 0;
+    border-radius: 50%;
+    transition: all 1s ease-in-out;
+    text-align: center;
+    transform: scaleX(0) scaleY(0) scaleZ(0);
+    border-radius: 50%;
+}
+.winner.showWinner, .tie.showTie{
+    opacity: 1;
+    transform: scaleX(1) scaleY(1) scaleZ(1);
+    border-radius: 0;
+}
+.winner-box, .tie-box{
+    opacity: 0;
+    transition: all 4s ease-in-out;
+}
+.winner.showWinner .winner-box, .tie.showTie .tie-box{
+    opacity: 1;
+}
+.win-image{
+    width: 80px;
+    margin: 0 auto;
+}
+.text{
+    font-size: 40px;
+    margin-top: 15px;
+}
+.text span{
+    position: relative;
+    font-size: 54px;
+    font-weight: 700;
+    
+}
+.winner .text span{
+    padding-left: 45px;
+}
+.text span::before{
+    content: 'O';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #FA1B69;
+    opacity: 0;
+}
+.text span::after{
+    content: 'X';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #4287FF;
+    opacity: 0;  
+}
+.playerX .text span::after{
+    opacity: 1;
+}
+.playerO .text span::before{
+    opacity: 1;
+}
+.tie h6{
+    font-size: 50px;
+    color: #FA1B69;
+}
+
+.switch {
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    position: relative;
+    right: 0;
+    top:24px;
+  }
+/*   
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  } */
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFE164;
+    background-image: url(../image/sun.png);
+    background-repeat: no-repeat;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: inset 1px 1px 1px 1px rgb(0 0 0 / 10%);
+    -webkit-box-shadow: inset 1px 1px 1px 1px rgb(0 0 0 / 10%)
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .night-switch .slider {
+    background-color: #1E2D66;
+    background-image: url('../image/half-moon.png') ;
+    background-position: 32px 5px;
+    
+    box-shadow: inset 1px 1px 1px 1px rgb(0 0 0 / 10%);
+    -webkit-box-shadow: inset 1px 1px 1px 1px rgb(0 0 0 / 10%)
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+
+  }
+  
+   .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .night-switch  .slider:before {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .night-mode{
+      background-color: #2E2E3E;
+      color: #fff;
+  }
+  .night-mode .logo .o::before{
+    border-color:  #2E2E3E;
+  }
+  .night-mode .board-tile:hover{
+    background-color: #494960;
+}
+.night-mode .board-tile:not(:nth-child(3n)){
+    border-right: 3px solid #494960;
+
+}
+.night-mode  .board-tile:not(:nth-last-child(-n + 3)){
+    border-bottom: 3px solid #494960;
+}
+.night-mode .winner, .night-mode .tie{
+    background-color: #2E2E3E;
+    margin-top: -1px;
+    margin-left: -1px;
+    width: 501px;
+    height: 501px;
+}
+.night-mode .logo {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #494960;
+}
+
+@media only screen and (max-width: 1500px){
+    .restart::after{
+        bottom: 5px;
+        left: 50px;
+    }
+}
+
+  @media only screen and (max-width: 1200px){
+
+    h1{
+        margin-bottom: 50px;
+        font-size: 44px;
+    }
+    
+}
