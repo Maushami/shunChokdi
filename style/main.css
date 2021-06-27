@@ -12,7 +12,7 @@ img{
     max-width: 100%;
 }
 header{
-    padding: 15px 0;
+    padding: 15px;
     border-bottom: 1px solid rgb(0,0,0,0.04) ;
     justify-content: center;
     align-items: center;
@@ -432,6 +432,9 @@ header .container{
     h1{
         margin-bottom: 50px;
         font-size: 44px;
+    }
+    .restart::after{
+        display: none;
     }
     
 }
